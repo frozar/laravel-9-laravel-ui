@@ -5,7 +5,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>D
+</p>
+
+sudo service mysql stop  
+
+Documentation link :  
+https://www.tutsmake.com/laravel-9-multi-user-authentication-example/  
+
+docker run --name=mysql -e MYSQL_ROOT_PASSWORD=toto  -p 3306:3306 -d mysql  
+mysql -h 0.0.0.0 -uroot -p  
+CREATE DATABASE laravel_ui;  
+php artisan migrate  
 
 Documentation link:  
 https://www.tutsmake.com/laravel-9-multi-user-authentication-example/
