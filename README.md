@@ -17,8 +17,21 @@ mysql -h 0.0.0.0 -uroot -p
 CREATE DATABASE laravel_ui;  
 php artisan migrate  
 
-Documentation link:  
-https://www.tutsmake.com/laravel-9-multi-user-authentication-example/
+
+Setup :  
+composer create-project --prefer-dist laravel/laravel laravel-9-laravel-ui  
+php artisan migrate  
+
+To compile asset files, JS and CSS files.  
+composer require laravel/ui  
+php artisan ui bootstrap --auth  
+npm install  
+npm run dev  
+
+
+Documentation link to use correctly vite:  
+https://github.com/laravel/vite-plugin/blob/main/UPGRADE.md#migrating-from-laravel-mix-to-vite
+
 
 ## About Laravel
 

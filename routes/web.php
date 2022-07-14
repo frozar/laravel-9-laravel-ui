@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,21 +19,22 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect("home");
+    // return view('welcome');
 });
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /*------------------------------------------
 --------------------------------------------
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:user'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-});
+// Route::middleware(['auth', 'user-access:user'])->group(function () {
+//     Route::get('/home', [HomeController::class, 'index'])->name('home');
+// });
 
 /*------------------------------------------
 --------------------------------------------
@@ -40,14 +42,27 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
+    // Route::get('/admin/home', [AuthHomeController::class, 'adminHome'])->name('admin.home');
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 });
 
 /*------------------------------------------
 --------------------------------------------
-All Admin Routes List
+All Manager Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:manager'])->group(function () {
+    // Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // Route::get('/manager/home', [AuthHomeController::class, 'managerHome'])->name('manager.home');
     Route::get('/manager/home', [HomeController::class, 'managerHome'])->name('manager.home');
+});
+
+// Documentation link:
+// https://codeanddeploy.com/blog/laravel/laravel-8-logout-for-your-authenticated-user
+
+Route::middleware(['auth'])->group(function () {
+    /**
+     * Logout Route
+     */
+    Route::post('/logout', [LogoutController::class, 'perform'])->name('logout');
 });

@@ -19,19 +19,13 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        // dd($request);
         $guards = empty($guards) ? [null] : $guards;
-        // dd($guards);
 
         foreach ($guards as $guard) {
-            // dd($guard);
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
         }
-        // dd($request);
-        // dd($next);
-        // dd($next($request));
 
         return $next($request);
     }

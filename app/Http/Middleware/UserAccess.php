@@ -16,10 +16,13 @@ class UserAccess
      */
     public function handle(Request $request, Closure $next, $userType)
     {
-        dd($userType);
+        // dd(auth());
+        // dd(auth()->user());
         if (auth()->user()->type == $userType) {
             return $next($request);
         }
+        dd(auth()->user()->type);
+        // dd($userType);
 
         return response()->json(['You do not have permission to access for this page.']);
     }
