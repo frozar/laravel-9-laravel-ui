@@ -30,7 +30,10 @@ npm run dev
 
 
 Documentation link to use correctly vite:  
-https://github.com/laravel/vite-plugin/blob/main/UPGRADE.md#migrating-from-laravel-mix-to-vite
+https://github.com/laravel/vite-plugin/blob/main/UPGRADE.md#migrating-from-laravel-mix-to-vite  
+
+Reset the DB content:  
+php artisan db:wipe && php artisan migrate && php artisan db:seed --class=CreateUsersSeeder  
 
 
 ## About Laravel
